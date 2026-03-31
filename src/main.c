@@ -20,7 +20,7 @@ int main(void)
     Game game = Game_init("./assets/test.vxe", &player, &entarr, &itemarr, true, true, false);
 
     run(&game);
-
+    
     Game_destroy(&game);
 
     player_destroy(&player);
