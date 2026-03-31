@@ -10,7 +10,7 @@ A lightweight, CLI-based game engine written in pure C, built on top of [core](h
 - Built entirely on custom generic data structures (corelib)
 
 ## Dependencies
-- corelib (included in `src/core.c`)
+- core (included in `src/core.c`)
 
 ## Building
 ```bash
