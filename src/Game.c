@@ -232,9 +232,132 @@ bool move_player(Game* game, int x, int y)
         return false;
     }
 }
+bool move_entity(Game* game, Entity* entity, int x, int y)
+{
+    int newX = entity_getxpos(entity) + x;
+    int newY = entity_getypos(entity) + y;
+
+    if (newY >= 0 && newY < game->_map_lines)
+    {
+        if (newX >= 0 && newX < string_length((string*)aget(&game->_map, newY)))
+        {
+            if (string_at((string*)aget(&game->_map, newY), newX) == '#')
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
 void move_entities(Game* game)
 {
+    for (size_t i = 0; i < alength(&game->_current_entities); i++)
+    {
+        Entity* entity = (Entity*)aget(&game->_current_entities, i);
 
+        int Xdiff = player_getxpos(&game->_current_player) - entity_getxpos(entity);
+        int Ydiff = player_getypos(&game->_current_player) - entity_getypos(entity);
+
+        printf("%c Diff: (X: %d, Y: %d)\n", entity_getsymbol(entity), Xdiff, Ydiff);
+
+        bool verticalmov;
+        bool horizontalmov;
+        int horizontalstep = 0;
+        int verticalstep = 0;
+
+        bool isHoriBetter = (abs(Xdiff) > abs(Ydiff)) ? true : false;
+
+        if (isHoriBetter)
+        {
+            if (Xdiff > 0)
+            {
+                horizontalmov = move_entity(game, entity, 1, 0);
+                horizontalstep = 1;
+
+
+                if (!horizontalmov)
+                {
+                    if (Ydiff > 0)
+                    {
+                        verticalmov = move_entity(game, entity, 0, 1);
+                    }
+                    else
+                    {
+                        verticalmov = move_entity(game, entity, 0, -1);
+                    }
+                }
+            }
+            else if (Xdiff < 0)
+            {
+                horizontalmov = move_entity(game, entity, -1, 0);
+                horizontalstep = -1;
+
+                if (!horizontalmov)
+                {
+                    if (Ydiff > 0)
+                    {
+                        verticalmov = move_entity(game, entity, 0, 1);
+                    }
+                    else
+                    {
+                        verticalmov = move_entity(game, entity, 0, -1);
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (Ydiff > 0)
+            {
+                verticalmov = move_entity(game, entity, 0, 1);
+
+                if (!verticalmov)
+                {
+                    if (Xdiff < 0)
+                    {
+                        horizontalmov = move_entity(game, entity, 1, 0);
+                        horizontalstep = 1;
+                    }
+                    else if (Xdiff > 0)
+                    {
+                        horizontalmov = move_entity(game, entity, -1, 0);
+                        horizontalstep = -1;
+                    }
+                }
+            }
+            else
+            {
+                verticalmov = move_entity(game, entity, 0, -1);
+
+                if (!verticalmov)
+                {
+                    if (Xdiff < 0)
+                    {
+                        horizontalmov = move_entity(game, entity, 1, 0);
+                        horizontalstep = 1;
+                    }
+                    else if (Xdiff > 0)
+                    {
+                        horizontalmov = move_entity(game, entity, -1, 0);
+                        horizontalstep = -1;
+                    }
+                }
+            }
+        }
+
+        entity_move(entity, horizontalstep, verticalstep);
+    }
 }
 void check_collision(Game* game)
 {
@@ -352,6 +475,7 @@ void handle_combat(Game* game, Entity* entity, size_t index)
         printf("You survived!\n");
 
         aremove(&game->_current_entities, index);
+        game->_current_entities_amount--;
     }
 }
 

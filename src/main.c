@@ -7,8 +7,8 @@ int main(void)
     array entarr = array_init(0, sizeof(Entity));
     array itemarr = array_init(0, sizeof(Item));
 
-    Entity ent = entity_init(3, 1, 1, 1);
-    Entity ent2 = entity_init(3, 3, 1, 1);
+    Entity ent = entity_init('A', 3, 1, 1, 1);
+    Entity ent2 = entity_init('B', 3, 3, 1, 1);
 
     ainsert(&entarr, &ent);
     ainsert(&entarr, &ent2);

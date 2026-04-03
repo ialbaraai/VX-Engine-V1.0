@@ -1,8 +1,8 @@
 #include "../include/Entity.h"
 
-Entity entity_init(int x, int y, int damage, int id)
+Entity entity_init(char symbol, int x, int y, int damage, int id)
 {
-    Entity ent = {._symbol = 'M',
+    Entity ent = {._symbol = symbol,
                   ._xposition = x,
                   ._yposition = y,
                   ._health = 100,

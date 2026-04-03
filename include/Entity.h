@@ -14,7 +14,7 @@ typedef struct Entity
     int _id;
 } Entity;
 
-Entity entity_init(int x, int y, int damage, int id);
+Entity entity_init(char symbol, int x, int y, int damage, int id);
 
 int entity_getxpos(Entity*);
 int entity_getypos(Entity*);

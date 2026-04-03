@@ -38,6 +38,7 @@ void process_input(string*);
 
 void update(Game*);
 bool move_player(Game*, int, int);
+bool move_entity(Game* game, Entity* entity, int x, int y);
 void move_entities(Game*);
 void check_collision(Game*);
 void handle_combat(Game*, Entity*, size_t);
