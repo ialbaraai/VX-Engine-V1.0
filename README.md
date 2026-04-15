@@ -14,7 +14,9 @@ A lightweight, CLI-based game engine written in pure C, built on top of [core](h
 
 ## Building
 ```bash
-gcc src/main.c src/core.c src/Game.c src/Player.c src/Entity.c src/Item.c -o vxengine
+make #build
+make clean #clean
+make re #rebuild
 ```
 
 ## Usage
