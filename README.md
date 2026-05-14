@@ -21,26 +21,26 @@ make re #rebuild
 
 ## Usage
 ```c
-Player player = player_init();
-array entities = array_init(0, sizeof(Entity));
-array items    = array_init(0, sizeof(Item));
+Player player = player_init(); // Initialize your player
+array entities = array_init(0, sizeof(Entity)); // Initialize the entities array using [core](https://github.com/ialbaraai/core) arrays
+array items    = array_init(0, sizeof(Item)); // Initialize the items array using [core](https://github.com/ialbaraai/core) arrays
 
-Entity e1 = entity_init(3, 1, 1, 1);
-ainsert(&entities, &e1);
+Entity e1 = entity_init(3, 1, 1, 1); // Initialize the entities
+ainsert(&entities, &e1); // Insert entities into your entities array
 
-Item itm = item_init("Hot Chocolate", 1, 3, 10);
-ainsert(&items, &itm);
+Item itm = item_init("Hot Chocolate", 1, 3, 10); // Initialize the items
+ainsert(&items, &itm); // Insert the items into your items array
 
-Game game = Game_init("./assets/map.vxe", &player, &entities, &items, true, true, false);
-run(&game);
+Game game = Game_init("./assets/map.vxe", &player, &entities, &items, true, true, false); // Initialize your game struct
+run(&game); // Run your game
 
-Game_destroy(&game);
-player_destroy(&player);
+Game_destroy(&game); // Destroy your game struct to free allocated memory
+player_destroy(&player); // Destroy your player to free allocated memory
 
-aforeach(&entities, clearent);
-aforeach(&items, clearitm);
-destroy_array(&entities);
-destroy_array(&items);
+aforeach(&entities, clearent); // Destroy your entities to free allocated memory (clearent is a function that calls entity_destroy() for each entity)
+aforeach(&items, clearitm); // Destroy your items to free allocated memory (clearitm is a function that calls item_destroy() for each item)
+destroy_array(&entities); // Destroy your entities array to free allocated memory
+destroy_array(&items); // Destroy your items array to free allocated memory
 ```
 
 ## Roadmap
