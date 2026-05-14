@@ -1,60 +1,26 @@
 # VX Engine
 
-<<<<<<< HEAD
-A lightweight, CLI-based game engine written in pure C, built on top of [core](https://github.com/ZynarX/core).
-=======
 A lightweight, CLI-based game engine written in pure C, built on top of [core](https://github.com/ialbaraai/core).
->>>>>>> b7ef526 (Finalized commit of VX Engine in C)
 
 ## Features
 - Entity, item, and player systems
 - Turn-based combat and collision detection
 - Scene loading from `.vxe` files
 - Inventory system with item pickup
-<<<<<<< HEAD
-- Built entirely on custom generic data structures (corelib)
-=======
 - Built entirely on custom generic data structures (core)
->>>>>>> b7ef526 (Finalized commit of VX Engine in C)
 
 ## Dependencies
 - core (included in `src/core.c`)
 
 ## Building
 ```bash
-<<<<<<< HEAD
-gcc src/main.c src/core.c src/Game.c src/Player.c src/Entity.c src/Item.c -o vxengine
-=======
 cmake . -B build
 cd build
 ./app
->>>>>>> b7ef526 (Finalized commit of VX Engine in C)
 ```
 
 ## Usage
 ```c
-<<<<<<< HEAD
-Player player = player_init();
-array entities = array_init(0, sizeof(Entity));
-array items    = array_init(0, sizeof(Item));
-
-Entity e1 = entity_init(3, 1, 1, 1);
-ainsert(&entities, &e1);
-
-Item itm = item_init("Hot Chocolate", 1, 3, 10);
-ainsert(&items, &itm);
-
-Game game = Game_init("./assets/map.vxe", &player, &entities, &items, true, true, false);
-run(&game);
-
-Game_destroy(&game);
-player_destroy(&player);
-
-aforeach(&entities, clearent);
-aforeach(&items, clearitm);
-destroy_array(&entities);
-destroy_array(&items);
-=======
 Player player = player_init(); // Initialize your player
 array entities = array_init(0, sizeof(Entity)); // Initialize the entities array using core arrays
 array items    = array_init(0, sizeof(Item)); // Initialize the items array using core arrays
