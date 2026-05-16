@@ -41,7 +41,6 @@ aforeach(&entities, clearent); // Destroy your entities to free allocated memory
 aforeach(&items, clearitm); // Destroy your items to free allocated memory (clearitm is a function that calls item_destroy() for each item)
 destroy_array(&entities); // Destroy your entities array to free allocated memory
 destroy_array(&items); // Destroy your items array to free allocated memory
->>>>>>> b7ef526 (Finalized commit of VX Engine in C)
 ```
 
 ## Roadmap
