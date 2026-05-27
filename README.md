@@ -47,5 +47,14 @@ destroy_array(&items); // Destroy your items array to free allocated memory
 - V1.1 — CLI designer and `.vxe` parser
 - V2.0 — SDL3 rendering
 
+---
+
 ## License
-MIT
+
+This project is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
+
+---
+
+## Author
+
+**albaraa** — [@ialbaraai](https://github.com/ialbaraai)
