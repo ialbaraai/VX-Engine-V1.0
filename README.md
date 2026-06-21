@@ -1,6 +1,6 @@
 # VX Engine
 
-A lightweight, CLI-based game engine written in pure C, built on top of [core](https://github.com/ialbaraai/core).
+A lightweight, CLI-based game engine written in pure C, built on [core](https://github.com/ialbaraai/core).
 
 ## Features
 - Entity, item, and player systems
